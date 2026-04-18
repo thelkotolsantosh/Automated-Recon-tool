@@ -1,0 +1,65 @@
+name: Test
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+
+    - name: Install dependencies
+      run: pip install -r requirements.txt
+
+    - name: Check imports and syntax
+      run: |
+        python -c "from recon.utils import validate_target, log, is_alive"
+        python -c "from recon.report import ReportWriter"
+        python -c "from recon.portscan import PortScanner"
+        python -c "from recon.subdomain import SubdomainScanner"
+        python -c "from recon.dirfuzz import DirFuzzer"
+        echo "All imports OK"
+
+    - name: Test validate_target function
+      run: |
+        python -c "
+        from recon.utils import validate_target
+        assert validate_target('example.com') == True
+        assert validate_target('sub.example.com') == True
+        assert validate_target('http://example.com') == False
+        assert validate_target('not_a_domain') == False
+        print('validate_target: all checks passed')
+        "
+
+    - name: Test report writer
+      run: |
+        python -c "
+        from recon.report import ReportWriter
+        import json, os
+        writer = ReportWriter('test_report.json')
+        dummy = {
+            'target': 'test.com',
+            'scan_time': '2024-01-01T00:00:00Z',
+            'subdomains': [{'subdomain': 'www.test.com', 'source': 'crt.sh'}],
+            'ports': [{'port': 80, 'service': 'HTTP', 'state': 'open', 'banner': None}],
+            'directories': []
+        }
+        writer.save(dummy)
+        assert os.path.exists('test_report.json')
+        with open('test_report.json') as f:
+            data = json.load(f)
+        assert data['summary']['total_subdomains'] == 1
+        assert data['summary']['total_open_ports'] == 1
+        os.remove('test_report.json')
+        print('ReportWriter: all checks passed')
+        "
