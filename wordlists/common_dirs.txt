@@ -1,0 +1,137 @@
+# Common directories and files to check during recon
+# Lines starting with # are ignored
+
+# Admin panels
+admin
+administrator
+admin-panel
+admincp
+control-panel
+cpanel
+dashboard
+manager
+panel
+wp-admin
+phpmyadmin
+adminer
+
+# APIs
+api
+api/v1
+api/v2
+api/v3
+graphql
+swagger
+swagger-ui
+swagger.json
+openapi.json
+api-docs
+
+# Config and secrets (accidentally exposed)
+.env
+.env.local
+.env.backup
+config.php
+config.json
+config.yml
+settings.py
+secrets.json
+credentials.json
+database.yml
+
+# Backups
+backup
+backups
+backup.zip
+backup.tar.gz
+db.sql
+dump.sql
+site.zip
+old
+archive
+
+# Dev/staging leftovers
+dev
+staging
+test
+debug
+beta
+alpha
+demo
+sandbox
+temp
+tmp
+
+# Common app paths
+login
+logout
+register
+signup
+reset-password
+forgot-password
+dashboard
+profile
+account
+settings
+users
+user
+
+# Infrastructure
+server-status
+server-info
+status
+health
+metrics
+ping
+actuator
+actuator/env
+actuator/health
+actuator/mappings
+
+# Uploads and files
+uploads
+upload
+files
+documents
+images
+assets
+media
+static
+public
+downloads
+
+# Git and version control (often exposed by accident)
+.git
+.git/config
+.git/HEAD
+.svn
+
+# Common CMS paths
+wp-content
+wp-includes
+wp-login.php
+xmlrpc.php
+joomla
+drupal
+sites/default/files
+
+# Logs (sometimes readable)
+logs
+log
+error.log
+access.log
+debug.log
+
+# PHP specific
+info.php
+phpinfo.php
+test.php
+shell.php
+
+# Misc
+robots.txt
+sitemap.xml
+crossdomain.xml
+humans.txt
+security.txt
+.well-known/security.txt
