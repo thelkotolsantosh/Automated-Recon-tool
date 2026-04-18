@@ -1,0 +1,33 @@
+{
+    "target": "example.com",
+    "scan_time": "2024-06-15T10:30:00Z",
+    "subdomains": [
+        { "subdomain": "www.example.com",     "source": "crt.sh" },
+        { "subdomain": "api.example.com",     "source": "crt.sh" },
+        { "subdomain": "mail.example.com",    "source": "brute-force" },
+        { "subdomain": "staging.example.com", "source": "brute-force" },
+        { "subdomain": "dev.example.com",     "source": "shodan" }
+    ],
+    "ports": [
+        { "port": 22,   "service": "SSH",   "state": "open", "banner": "SSH-2.0-OpenSSH_8.2p1" },
+        { "port": 80,   "service": "HTTP",  "state": "open", "banner": "HTTP/1.1 301 Moved Permanently\r\nServer: nginx/1.18.0" },
+        { "port": 443,  "service": "HTTPS", "state": "open", "banner": null },
+        { "port": 8080, "service": "Alt HTTP Proxy", "state": "open", "banner": "HTTP/1.1 200 OK\r\nServer: Apache/2.4.41" }
+    ],
+    "directories": [
+        { "path": "admin",        "url": "https://example.com/admin",        "status": 302, "size": 0,    "note": "(temporary redirect)" },
+        { "path": "api/v1",       "url": "https://example.com/api/v1",       "status": 200, "size": 1243, "note": "" },
+        { "path": "robots.txt",   "url": "https://example.com/robots.txt",   "status": 200, "size": 128,  "note": "" },
+        { "path": ".git/config",  "url": "https://example.com/.git/config",  "status": 200, "size": 241,  "note": "" },
+        { "path": "phpmyadmin",   "url": "https://example.com/phpmyadmin",   "status": 403, "size": 0,    "note": "(forbidden - resource exists but blocked)" },
+        { "path": "backup.zip",   "url": "https://example.com/backup.zip",   "status": 200, "size": 98432,"note": "" }
+    ],
+    "summary": {
+        "total_subdomains": 5,
+        "total_open_ports": 4,
+        "risky_ports": [],
+        "total_dirs_found": 6,
+        "dirs_403_or_401": 1,
+        "server_errors": 0
+    }
+}
