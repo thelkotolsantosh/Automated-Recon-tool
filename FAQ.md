@@ -92,7 +92,7 @@ source venv/bin/activate
 
 ### Step 5 — Install dependencies
 ```bash
-pip install -r Requirements.txt
+pip install -r requirements.txt
 ```
 
 ### Step 6 — Verify the tool is working
@@ -144,7 +144,7 @@ You should see `(venv)` appear at the start of your prompt.
 
 ### Step 5 — Install dependencies
 ```cmd
-pip install -r Requirements.txt
+pip install -r requirements.txt
 ```
 
 ### Step 6 — Verify the tool is working
@@ -332,12 +332,12 @@ This error means a required Python library is not installed in the current envir
 
 **Linux / macOS:**
 ```bash
-pip3 install -r Requirements.txt
+pip3 install -r requirements.txt
 ```
 
 **Windows:**
 ```cmd
-pip install -r Requirements.txt
+pip install -r requirements.txt
 ```
 
 If you are using a virtual environment, make sure it is **activated** before installing:
@@ -345,13 +345,13 @@ If you are using a virtual environment, make sure it is **activated** before ins
 **Linux / macOS:**
 ```bash
 source venv/bin/activate
-pip install -r Requirements.txt
+pip install -r requirements.txt
 ```
 
 **Windows:**
 ```cmd
 venv\Scripts\activate
-pip install -r Requirements.txt
+pip install -r requirements.txt
 ```
 
 If the error persists for a specific library, install it manually:
@@ -420,7 +420,7 @@ Then navigate to the original repository on GitHub and click **New Pull Request*
 - Keep new modules self-contained and placed in the `recon/` directory.
 - Add a short comment block at the top of each new file explaining what it does.
 - Test your changes against a domain you own before submitting.
-- Do not introduce dependencies beyond what is already in `Requirements.txt` without discussion.
+- Do not introduce dependencies beyond what is already in `requirements.txt` without discussion.
 
 ---
 
